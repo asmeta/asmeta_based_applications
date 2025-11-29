@@ -1,5 +1,5 @@
 asm reschedulerNonOptimal
-import  ../StandardLibrary
+import  StandardLibrary
 import knowledge
 signature:
 	//*************************************************
