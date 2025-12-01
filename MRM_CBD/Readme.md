@@ -15,6 +15,7 @@ In the paper, we have introduced four scenarios:
 |--------------|-----------------|---------------------------------|---------------------------------------------------------------------------------|
 | CS1          | none            | --                              | The first pill is skipped and the second is successfully rescheduled.          |
 | CS2          | none            | --                              | The first pill is skipped, and the second is rescheduled and taken at the new time. |
+| CS3          | none            | --                              | The pills are taken at prescribed time. |
 | WP           | Wrong pill      | `inv_A_medicineList`           | The patient loads an incorrect medicine in the second compartment.             |
 | PO           | Pill overlap    | `inv_A_timeConsumption`        | The rescheduler sets a time that violates the minimum interval before the next dose. |
 
