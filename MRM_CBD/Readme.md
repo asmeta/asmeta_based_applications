@@ -1,5 +1,5 @@
-Contract-based Design by I/O Abstract State Machines
-Silvia Bonfanti, Angelo Gargantini, Elvinia Riccobene, Patrizia Scandurra
+## Contract-based Design by I/O Abstract State Machines
+### Silvia Bonfanti, Angelo Gargantini, Elvinia Riccobene, Patrizia Scandurra
 
 This folder contains the models and the scenarios of the Medicine Reminder 
 and Monitoring (MRM) System submitted at the 27th International Symposium on Formal Methods (FM 2026).
@@ -9,9 +9,9 @@ The MRM system is designed to control a smart medicine dispenser
 In the paper, we have introduced four scenarios:
 
 
-# Validation Scenarios
+## Validation Scenarios
 
-| **Scenario** | **Error**** | **Description**                                                                 |
+| **Scenario** | **Error**       | Expected violated contract  |  **Description**                                                                 |
 |--------------|-----------------|---------------------------------|---------------------------------------------------------------------------------|
 | CS1          | none            | --                              | The first pill is skipped and the second is successfully rescheduled.          |
 | CS2          | none            | --                              | The first pill is skipped, and the second is rescheduled and taken at the new time. |
@@ -27,6 +27,6 @@ The scripts to simulate the scenarios presented in the paper are in the folder "
 - WP: pillboxCompWP.asmsh
 - PO: pillboxCompPO.asmsh
 
-To run the scenarios, and check the simulation use the following command in "MRM_CBD" folder:
+To run the scenarios, and check the simulation run the *AsmetaComp* using the following command in "MRM_CBD" folder:
 
 java -jar AsmetaComp.jar MRMModels/"filename".asmsh 
