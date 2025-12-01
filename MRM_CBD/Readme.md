@@ -18,14 +18,17 @@ In the paper, we have introduced four scenarios:
 | CS3          | none            | --                              | The pills are taken at prescribed time. |
 | WP           | Wrong pill      | `inv_A_medicineList`           | The patient loads an incorrect medicine in the second compartment.             |
 | PO           | Pill overlap    | `inv_A_timeConsumption`        | The rescheduler sets a time that violates the minimum interval before the next dose. |
+| WC           | Wrong configuration    | `inv_A_timeConsumption`        | The phisician prescribes medicine without adhere with the minimum interval between medicines. |
 
 
 
 The scripts to simulate the scenarios presented in the paper are in the folder "MRMModels":
 - CS1: pillboxCompCS1.asmsh
 - CS2: pillboxCompCS2.asmsh
+- CS3: pillboxCompCS3.asmsh
 - WP: pillboxCompWP.asmsh
 - PO: pillboxCompPO.asmsh
+- WC: pillboxCompWC.asmsh
 
 To run the scenarios, and check the simulation run the *AsmetaComp* using the following command in "MRM_CBD" folder:
 

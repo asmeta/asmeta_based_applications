@@ -1,5 +1,4 @@
-//Fosamax is missed and it is not possible to reschedule it otherwise the minToInterfer is not satisfied (MP2)
-//Moment is skipped and rescheduled (MP1)
+//The patient adds the wrong pill to the compartment 2
 setup CM as MRMModels/configurationMgr.asm
 setup RES as MRMModels/rescheduler.asm
 setup setup_comp as ( CM || RES )
