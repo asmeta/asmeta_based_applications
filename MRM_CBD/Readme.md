@@ -32,7 +32,7 @@ The scripts to simulate the scenarios presented in the paper are in the folder "
 - PO: pillboxCompPO.asmsh
 - WC: pillboxCompWC.asmsh
 
-Download the AsmetaComp.jar file.
+Download the *AsmetaComp.jar* file along with the models located in the MRMModels folder.
 
 To run the scenarios and check the simulation, run the *AsmetaComp* using the following command in "MRM_CBD" folder:
 
