@@ -1,8 +1,9 @@
 ## AsmetaComp: a Tool for Runtime Contract Checking with I/O Abstract State Machines
 ### Silvia Bonfanti, Angelo Gargantini, Elvinia Riccobene, Patrizia Scandurra
 
-This folder contains the models and the scenarios of the Medicine Reminder 
-and Monitoring (MRM) System submitted at the FORTE 2026: IFIP WG 6.1 International Conference on Formal Techniques for Distributed Objects, Components, and Systems.
+This repository contains the tool software artifacts (including models and the scenarios of the Medicine Reminder 
+and Monitoring (MRM) System) for the paper "AsmetaComp: a Tool for Runtime Contract Checking with I/O Abstract State Machines"
+submitted at the FORTE 2026: IFIP WG 6.1 International Conference on Formal Techniques for Distributed Objects, Components, and Systems.
 
 The MRM system is designed to control a smart medicine dispenser 
 (a remotely controllable pillbox) for medicine administration.
