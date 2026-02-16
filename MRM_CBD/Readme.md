@@ -1,8 +1,9 @@
-## Contract-based Design by I/O Abstract State Machines
+## AsmetaComp: a Tool for Runtime Contract Checking with I/O Abstract State Machines
 ### Silvia Bonfanti, Angelo Gargantini, Elvinia Riccobene, Patrizia Scandurra
 
 This folder contains the models and the scenarios of the Medicine Reminder 
-and Monitoring (MRM) System submitted at the 27th International Symposium on Formal Methods (FM 2026).
+and Monitoring (MRM) System submitted at the FORTE 2026: IFIP WG 6.1 International Conference on Formal Techniques for Distributed Objects, Components, and Systems.
+
 The MRM system is designed to control a smart medicine dispenser 
 (a remotely controllable pillbox) for medicine administration.
 
