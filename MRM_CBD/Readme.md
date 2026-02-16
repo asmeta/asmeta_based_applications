@@ -1,7 +1,7 @@
 ## AsmetaComp: a Tool for Runtime Contract Checking with I/O Abstract State Machines
 ### Silvia Bonfanti, Angelo Gargantini, Elvinia Riccobene, Patrizia Scandurra
 
-This repository contains the tool software artifacts (including models and the scenarios of the Medicine Reminder 
+This folder contains the tool software artifacts (including models and the scenarios of the Medicine Reminder 
 and Monitoring (MRM) System) for the paper "AsmetaComp: a Tool for Runtime Contract Checking with I/O Abstract State Machines"
 submitted at the FORTE 2026: IFIP WG 6.1 International Conference on Formal Techniques for Distributed Objects, Components, and Systems.
 
