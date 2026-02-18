@@ -16,7 +16,7 @@ To test the models and the contracts, we have introduced the following scenarios
 | **Scenario** | **Error**       | Expected violated contract  |  **Description**                                                                 |
 |--------------|-----------------|---------------------------------|---------------------------------------------------------------------------------|
 | CS1          | none            | --                              | The first pill is skipped, and the second is successfully rescheduled.          |
-| CS2          | none            | --                              | The first pill is skipped, and the second is rescheduled and taken at the new time. |
+| CS2          | none            | --                              | The first pill is taken on time, and the second is rescheduled and taken at the new time. |
 | CS3          | none            | --                              | The pills are taken at the prescribed time. |
 | WP           | Wrong pill      | `inv_A_medicineList`           | The patient loads an incorrect medicine in the second compartment.             |
 | PO           | Pill overlap    | `inv_A_timeConsumption`        | The rescheduler sets a new time consumption that violates the minimum interval before the next dose. |
