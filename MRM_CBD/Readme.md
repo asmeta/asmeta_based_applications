@@ -9,7 +9,7 @@ accepted for presentation at FORTE 2026 - 46th International Conference on Forma
 ## Additional Material
 In this repository, we provide the following additional material:
 * [Soundness Proofs for the Contract Composition Rules of I/O ASM](https://github.com/asmeta/asmeta_based_applications/blob/main/MRM_CBD/Soundness%20Proofs%20for%20the%20Contract%20Composition%20Rules%20of%20IO%20ASM.pdf)
-* [Tool Artifact Description](https://github.com/asmeta/asmeta_based_applications/blob/main/MRM_CBD/Tool%20Artifact%20Description.pdf)
+* [Tool Artifact Description](https://github.com/asmeta/asmeta_based_applications/blob/main/MRM_CBD/Tool%20Artifact%20Description.pdf) for the MRM System Validation Scenarios execution
 
 
 ## MRM System Validation
