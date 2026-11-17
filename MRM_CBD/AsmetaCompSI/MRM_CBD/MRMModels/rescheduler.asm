@@ -42,6 +42,14 @@ signature:
 	controlled medicine_list: Seq(String)
 	controlled deltaDelay: String -> Natural
 	controlled nextDrugIndexN: Compartment ->Natural
+	// Snapshot the input of the step that generated the current outputs.
+    controlled snapReady: Boolean
+    controlled snapClock: Natural
+    controlled snapSlot: Compartment -> Natural
+    controlled snapNext: Compartment -> Natural
+    controlled snapHasNext: Compartment -> Boolean
+    controlled snapMin: Prod(Compartment,Compartment) -> Natural
+
 
 	//*************************************************
 	// STATIC VARIABLES
@@ -55,6 +63,8 @@ signature:
 
 	controlled tempComputation: Boolean
 	derived computeDer: Boolean
+	
+    
 	
 definitions:
 	//*************************************************
@@ -86,6 +96,9 @@ definitions:
 		if  $i < iton(length(time_consumption($compartment)))  then $i else 0n endif
 		endlet 
 	
+	
+
+
  
     //*************************************************
 	// RULE DEFINITIONS
@@ -166,8 +179,24 @@ endif
 				 endif
 	
 				
-	rule r_NORMAL_FUNCT =  //par r_keepPrevLiths[] r_enforce[] r_resetMidnight[] r_evaluate_output_pill[] endpar //r_CompartmentMgmt[] 
-    		par  r_rescheduler[] r_resetMidnight[] r_evaluate_output_pill[] endpar
+	/*rule r_NORMAL_FUNCT =  //par r_keepPrevLiths[] r_enforce[] r_resetMidnight[] r_evaluate_output_pill[] endpar //r_CompartmentMgmt[] 
+    		par  r_rescheduler[] r_resetMidnight[] r_evaluate_output_pill[] endpar */
+    		
+    rule r_NORMAL_FUNCT = 
+ 		par
+          r_rescheduler[] r_resetMidnight[] r_evaluate_output_pill[]
+          snapReady := true
+          snapClock := pillboxSystemTime mod 1440n
+          forall $x in Compartment do
+            par
+              snapSlot($x) := at(time_consumption($x),drugIndex($x))
+              snapNext($x) := at(time_consumption($x),nextDrugIndex($x))
+              snapHasNext($x) := nextDrugIndex($x) > drugIndex($x)
+              forall $y in Compartment do snapMin($x,$y) := minToInterferer(name($x),name($y))
+            endpar
+        endpar		
+    		
+    		
 
 //If pill is missed and there is no overlap with next pills, delayed it
 invariant inv_G_newTime over newTime: (forall $compartment in Compartment with
@@ -214,7 +243,16 @@ invariant inv_A_actual_time over Compartment: (forall $compartment in Compartmen
 
 // A dose reported as missed must not already be recorded as taken at that index. It assumes that 0 means “not taken” and that the index and the sequence of actual intake times are valid.
 invariant inv_A_missedNotTaken over isPillMissed: (forall $c in Compartment with (isPillMissed($c) implies at(actual_time_consumption($c),drugIndex($c)) = 0n))
-			
+		
+		
+// A rescheduled missed dose must be in the future of the current day.
+//invariant inv_G_rescheduleInFuture over newTime: (forall $c in Compartment with ((snapReady and setNewTime($c) and not setOriginalTime($c)) implies newTime($c) > snapClock))		
+invariant inv_G_rescheduleInFuture over newTime:
+    (forall $c in Compartment with
+        ((snapReady and setNewTime($c) and not setOriginalTime($c))
+         implies
+            (newTime($c) > snapClock and
+             newTime($c) < 1440n)))			
 	
     //*************************************************
 	// MAIN Rule
@@ -243,6 +281,15 @@ invariant inv_A_missedNotTaken over isPillMissed: (forall $c in Compartment with
  * 			r_NORMAL_FUNCT[]
  endif */
 default init s0:	//This init state is correct, it does not generate any invariant violation
+	
+	// Snapshot starts inactive until the first NORMAL transition.
+    function snapReady = false
+    function snapClock = 0n
+    function snapSlot($c in Compartment) = 0n
+    function snapNext($c in Compartment) = 0n
+    function snapHasNext($c in Compartment) = false
+    function snapMin($c in Compartment, $n in Compartment) = 0n
+    
 	//Controlled function that indicates the status of the system
 	function state = INIT
 	
@@ -321,3 +368,4 @@ default init s0:	//This init state is correct, it does not generate any invarian
 			case compartment2 : [0n, 0n]
 		endswitch 	
 		
+	function setOriginalTime($c in Compartment) = false
