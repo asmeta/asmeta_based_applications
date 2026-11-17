@@ -211,6 +211,9 @@ invariant inv_A_actual_time over Compartment: (forall $compartment in Compartmen
 		))
     ))
 	
+
+// A dose reported as missed must not already be recorded as taken at that index. It assumes that 0 means “not taken” and that the index and the sequence of actual intake times are valid.
+invariant inv_A_missedNotTaken over isPillMissed: (forall $c in Compartment with (isPillMissed($c) implies at(actual_time_consumption($c),drugIndex($c)) = 0n))
 			
 	
     //*************************************************
