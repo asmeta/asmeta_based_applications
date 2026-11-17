@@ -20,20 +20,20 @@ To test the models and the contracts, we have introduced the following scenarios
 
 ## Validation Scenarios
 
-| **Scenario** | **Error**                 | Expected violated contract |  **Description**                                                                                              |
-|--------------|---------------------------|----------------------------|---------------------------------------------------------------------------------------------------------------|
-| CS1          | none                      | --                         | A pill is missed, and not rescheduled since it interferes with the next pill.                                 |
-| CS2          | none                      | --                         | The first pill is taken on time, and the second is rescheduled and taken at the new time.                     |
-| CS3          | none                      | --                         | The pills are taken at the prescribed time.                                                                   |
-| WP           | Wrong pill                | `inv_A_medicineList`       | The patient loads an incorrect pill in the second compartment.                                                |
-| PO           | Pill overlap              | `inv_A_timeConsumption`    | The rescheduler sets a new time consumption that violates the minimum interval before the next dose.          |
-| WC           | Wrong configuration       | `inv_A_timeConsumption`    | The physician prescribes medicine without adhering to the minimum interval between medicines.                 |
-| DM           | Duplicate medicine        | `inv_A_compName`           | Both compartments contain the same medicine instead two different medicines.                                  |
-| NS           | Wrong number of slots     | `inv_A_CompSize`           | A compartment is configured with one scheduled slot instead of the two prescribed.                            |
-| FD           | Faulty display            | `inv_G_compDispMess1`      | A faulty compartment displays a take message while its LED is off, despite consistent inputs.                 |
-| B360         | Minimum interval boundary | --                         | Two consecutive pills are scheduled exactly at the minimum allowed intake interval.                           |
-| B359         | Minimum interval breach   | `inv_A_timeConsumption`    | Two consecutive pills are scheduled one minute less than the minimum allowed intake interval.                 |
-| B0           | Simultaneous intakes      | `inv_A_timeConsumption`    | Two pills are scheduled at the same time, violating the minimum allowed intake interval.                      |
+| **Scenario** | **Error**                 | **Expected violated contract** |  **Description**                                                                                              |
+|--------------|---------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------|
+| CS1          | none                      | --                             | A pill is missed, and not rescheduled since it interferes with the next pill.                                 |
+| CS2          | none                      | --                             | The first pill is taken on time, and the second is rescheduled and taken at the new time.                     |
+| CS3          | none                      | --                             | The pills are taken at the prescribed time.                                                                   |
+| WP           | Wrong pill                | `inv_A_medicineList`           | The patient loads an incorrect pill in the second compartment.                                                |
+| PO           | Pill overlap              | `inv_A_timeConsumption`        | The rescheduler sets a new time consumption that violates the minimum interval before the next dose.          |
+| WC           | Wrong configuration       | `inv_A_timeConsumption`        | The physician prescribes medicine without adhering to the minimum interval between medicines.                 |
+| DM           | Duplicate medicine        | `inv_A_compName`               | Both compartments contain the same medicine instead two different medicines.                                  |
+| NS           | Wrong number of slots     | `inv_A_CompSize`               | A compartment is configured with one scheduled slot instead of the two prescribed.                            |
+| FD           | Faulty display            | `inv_G_compDispMess1`          | A faulty compartment displays a take message while its LED is off, despite consistent inputs.                 |
+| B360         | Minimum interval boundary | --                             | Two consecutive pills are scheduled exactly at the minimum allowed intake interval.                           |
+| B359         | Minimum interval breach   | `inv_A_timeConsumption`        | Two consecutive pills are scheduled one minute less than the minimum allowed intake interval.                 |
+| B0           | Simultaneous intakes      | `inv_A_timeConsumption`        | Two pills are scheduled at the same time, violating the minimum allowed intake interval.                      |
 
 
 The scripts to simulate the scenarios presented in the paper are in the folder "MRMModels":
