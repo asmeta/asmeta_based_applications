@@ -34,6 +34,9 @@ To test the models and the contracts, we have introduced the following scenarios
 | B360         | Minimum interval boundary | --                             | Two consecutive pills are scheduled exactly at the minimum allowed intake interval.                           |
 | B359         | Minimum interval breach   | `inv_A_timeConsumption`        | Two consecutive pills are scheduled one minute less than the minimum allowed intake interval.                 |
 | B0           | Simultaneous intakes      | `inv_A_timeConsumption`        | Two pills are scheduled at the same time, violating the minimum allowed intake interval.                      |
+| CE           | Conflicting events        | `inv_A_missedNotTaken`         | A dose reported as missed must not already be recorded as taken.                                |
+| PM           | Reschedule to a past time | `inv_G_rescheduleInFuture`	 | A rescheduled missed dose must be in the future of the current day.                                           | 
+
 
 
 The scripts to simulate the scenarios presented in the paper are in the folder "MRMModels":
@@ -49,6 +52,8 @@ The scripts to simulate the scenarios presented in the paper are in the folder "
 - B360: composedGap360.asmsh
 - B359: composedGap359.asmsh
 - B0: composedGap0.asmsh
+- CE: rs_ConflictingEvent.asmsh
+- PM: rs_PastMoment.asmsh
 
 Download the *AsmetaComp.jar* file along with the models located in the MRMModels folder.
 
