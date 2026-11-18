@@ -19,7 +19,7 @@ To test the models and the contracts, we have introduced the following scenarios
 
 
 ## A/G Contracts
-      /G Assertion**             | Component | **Description**                                                                                                                                                                                |
+|    **A/G Assertion**           | **Component** | **Description**                                                                                                                                                                                |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `inv_A_medicineList`           |               |																																			 |
 | `inv_A_timeConsumption`        |               |																																		       |
