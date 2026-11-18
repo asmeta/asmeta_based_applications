@@ -20,7 +20,7 @@ To test the models and the contracts, we have introduced the following scenarios
 
 ## Validation Scenarios
 
-| **Scenario** | **Error**                 | **Expected violated contract** |  **Description**                                                                                              |
+| **Scenario** | **Error**                 | **Expected violated contract** |  **Scenario description**                                                                                              |
 |--------------|---------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------|
 | CS1          | none                      | --                             | A pill is missed, and not rescheduled since it interferes with the next pill.                                 |
 | CS2          | none                      | --                             | The first pill is taken on time, and the second is rescheduled and taken at the new time.                     |
@@ -34,8 +34,8 @@ To test the models and the contracts, we have introduced the following scenarios
 | B360         | Minimum interval boundary | --                             | Two consecutive pills are scheduled exactly at the minimum allowed intake interval.                           |
 | B359         | Minimum interval breach   | `inv_A_timeConsumption`        | Two consecutive pills are scheduled one minute less than the minimum allowed intake interval.                 |
 | B0           | Simultaneous intakes      | `inv_A_timeConsumption`        | Two pills are scheduled at the same time, violating the minimum allowed intake interval.                      |
-| CE           | Conflicting events        | `inv_A_missedNotTaken`         | A dose reported as missed must not already be recorded as taken.                                |
-| PM           | Reschedule to a past time | `inv_G_rescheduleInFuture`	 | A rescheduled missed dose must be in the future of the current day.                                           | 
+| CE           | Conflicting events        | `inv_A_missedNotTaken`         | A dose is reported as missed and already recorded as taken.                                                   |
+| PM           | Reschedule to a past time | `inv_G_rescheduleInFuture`	 | A missed dose is rescheduled in the past.                                                                     | 
 
 
 
