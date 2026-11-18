@@ -19,7 +19,9 @@ To test the models and the contracts, we have introduced the following scenarios
 
 
 ## A/G Contracts
-| **A/G Assertion**              | **Description**                 |
+
+| **A/G Assertion**              | **Description**                                                                                                                                                                                |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `inv_A_medicineList`           |       |
 | `inv_A_timeConsumption`        |       |
 | `inv_A_compName`               |       |
@@ -28,9 +30,10 @@ To test the models and the contracts, we have introduced the following scenarios
 | `inv_A_missedNotTaken`         |   A dose reported as missed must not already be recorded as taken at that index. It assumes that 0 means “not taken” and that the index and the sequence of actual intake times are valid.     |
 | `inv_G_rescheduleInFuture`     |   If a missed dose is rescheduled, its new intake time must be later than the time of the rescheduling decision and must fall within the same day.    |
 
+
 ## Validation Scenarios
 
-| **Scenario** | **Error**                 | **Expected violated contract** |  **Scenario description**                                                                                              |
+| **Scenario** | **Error**                 | **Expected violated contract** |  **Scenario description**                                                                                     |
 |--------------|---------------------------|--------------------------------|---------------------------------------------------------------------------------------------------------------|
 | CS1          | none                      | --                             | A pill is missed, and not rescheduled since it interferes with the next pill.                                 |
 | CS2          | none                      | --                             | The first pill is taken on time, and the second is rescheduled and taken at the new time.                     |
