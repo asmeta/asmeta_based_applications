@@ -1,4 +1,4 @@
-//Fosamax an moment are taken at prescribed time.
+//Fosamax and moment are taken at prescribed time.
 setup CM as MRMModels/configurationMgrWrongConfig.asm
 setup RES as MRMModels/reschedulerWrongConfig.asm
 setup setup_comp as ( CM || RES )

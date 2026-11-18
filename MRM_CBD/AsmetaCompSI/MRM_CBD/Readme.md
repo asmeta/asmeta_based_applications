@@ -18,6 +18,16 @@ The MRM system is designed to control a smart medicine dispenser (a remotely con
 To test the models and the contracts, we have introduced the following scenarios:
 
 
+## A/G Contracts
+| **A/G Assertion**              | **Description**                 |
+| `inv_A_medicineList`           |       |
+| `inv_A_timeConsumption`        |       |
+| `inv_A_compName`               |       |
+| `inv_A_CompSize`               |       |
+| `inv_G_compDispMess1`          |       |
+| `inv_A_missedNotTaken`         |       |
+| `inv_G_rescheduleInFuture`     |       |
+
 ## Validation Scenarios
 
 | **Scenario** | **Error**                 | **Expected violated contract** |  **Scenario description**                                                                                              |
@@ -35,7 +45,7 @@ To test the models and the contracts, we have introduced the following scenarios
 | B359         | Minimum interval breach   | `inv_A_timeConsumption`        | Two consecutive pills are scheduled one minute less than the minimum allowed intake interval.                 |
 | B0           | Simultaneous intakes      | `inv_A_timeConsumption`        | Two pills are scheduled at the same time, violating the minimum allowed intake interval.                      |
 | CE           | Conflicting events        | `inv_A_missedNotTaken`         | A dose is reported as missed and already recorded as taken.                                                   |
-| PM           | Reschedule to a past time | `inv_G_rescheduleInFuture`	 | A missed dose is rescheduled in the past.                                                                     | 
+| PM           | Reschedule to a past time | `inv_G_rescheduleInFuture`     | A missed dose is rescheduled in the past.                                                                     | 
 
 
 
