@@ -19,14 +19,14 @@ To test the models and the contracts, we have introduced the following scenarios
 
 
 ## A/G Contracts
-      /G Assertion**              | Component | **Description**                                                                                                                                                                                |
-|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `inv_A_medicineList`           |    |   |
-| `inv_A_timeConsumption`        |    |   |
-| `inv_A_compName`               |    |   |
-| `inv_A_CompSize`               |    |   |
-| `inv_G_compDispMess1`          |    |   |
-| `inv_A_missedNotTaken`         | rescheduler   | A dose reported as missed must not already be recorded as taken at that index. It assumes that 0 means “not taken” and that the index and the sequence of actual intake times are valid.     |
+      /G Assertion**             | Component | **Description**                                                                                                                                                                                |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `inv_A_medicineList`           |               |																																			 |
+| `inv_A_timeConsumption`        |               |																																		       |
+| `inv_A_compName`               |               |
+| `inv_A_CompSize`               |               | |
+| `inv_G_compDispMess1`          |               | |
+| `inv_A_missedNotTaken`         | rescheduler   | A dose reported as missed must not already be recorded as taken at that index. It assumes that 0 means “not taken” and that the index and the sequence of actual intake times are valid.   |
 | `inv_G_rescheduleInFuture`     | rescheduler   | If a missed dose is rescheduled, its new intake time must be later than the time of the rescheduling decision and must fall within the same day.    |
 
 
