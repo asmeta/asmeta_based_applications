@@ -99,7 +99,7 @@ definitions:
     
     
     //Pills amount consistency: the amount of pills to intake and the number of the corresponding compartment slots must be the same
-   	invariant inv_A_CompSize over Compartment: ( forall $c in Compartment with iton(length(time_consumption($c))) = amount(name($c)) )
+   	invariant inv_A_compSize over Compartment: ( forall $c in Compartment with iton(length(time_consumption($c))) = amount(name($c)) )
     
     
     //Pills time consistency: the time schedule of the compartment's slots must be the same of those scheduled for the medicine and there must be no interferences
