@@ -1,0 +1,56 @@
+// CS2 – Successful rescheduling of a missed dose.
+// Fosamax is taken at its prescribed time.
+// The patient misses the first Moment dose, originally scheduled at minute 730.
+// The rescheduler postpones it by 60 minutes, to minute 790, and the patient subsequently takes the dose at the rescheduled time.
+setup CM as MRMModels/configurationMgr.asm
+setup RES as MRMModels/rescheduler.asm
+setup setup_comp as ( CM || RES )
+setup C1 as MRMModels/compartment.asm
+setup C2 as MRMModels/compartment.asm
+setup PB as MRMModels/pillbox.asm
+//RUN STEP 1:
+run(setup_comp, {pillboxSystemTime=0;day=0;isPillMissed(compartment1)=false;pillTakenWithDelay(compartment1)=false;isPillMissed(compartment2)=false;pillTakenWithDelay(compartment2)=false;redLed(compartment1)=OFF;redLed(compartment2)=OFF;name(compartment1)="fosamax";name(compartment2)="moment";time_consumption(compartment1)=[360];time_consumption(compartment2)=[730,1140];actual_time_consumption(compartment1)=[0];actual_time_consumption(compartment2)=[0,0];drugIndex(compartment1)=0;drugIndex(compartment2)=0})
+//RUN STEP 2:
+run(C1, {compartmentOpen(1)=false;outMess(1)="";led(1)=OFF;myID=1;outMess(undef)="";led(undef)=OFF})
+//RUN STEP 3:
+run(C2, {myID=2;compartmentOpen(2)=false;outMess(2)="";led(2)=OFF;outMess(undef)="";led(undef)=OFF})
+setup pillbox_comp as  ( ( PB <|> ( CM || RES ) ) <|> ( C1 || C2 ) )
+//RUN STEP 4:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=10n;skipNextPill(compartment1)=false;skipNextPill(compartment2)=false;skipNextPill(compartment1,compartment2)=false;skipNextPill(compartment2,compartment1)=false;newTime(compartment1)=0n;newTime(compartment2)=0n;setOriginalTime(compartment1)=false;setOriginalTime(compartment2)=false;setNewTime(compartment1)=false;setNewTime(compartment2)=false;openSwitch(1)=false;openSwitch(2)=false;})
+//The user opens the compartment 1 with "fosamax" pill to be taken at systemTime 360
+//RUN STEP 5:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=361n})
+//RUN STEP 6:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=true;compartmentOpen(2)=false;systemTime=362n})
+//RUN STEP 7:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=364n})
+//RUN STEP 8:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=365n})
+//RUN STEP 9:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=366n})
+//The user does not open the compartment 2 with "moment" pill to be taken at systemTime 730 within 20 minutes
+//RUN STEP 10:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=731n})
+//RUN STEP 11:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=742n})
+//RUN STEP 12:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=762n})
+//RUN STEP 13:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=765n})
+//The user opens the compartment 2 with "moment" pill to be taken at new systemTime 790
+//RUN STEP 14:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=791n})
+//RUN STEP 15:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=792n})
+//RUN STEP 16:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=793n})
+//RUN STEP 17:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=794n})
+//RUN STEP 18:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=795n})
+//RUN STEP 19:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=true;systemTime=796n})
+//RUN STEP 20:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=797n})
+//RUN STEP 21:
+run(pillbox_comp, {myID=undef;outMess(undef)="";led(undef)=OFF;compartmentOpen(1)=false;compartmentOpen(2)=false;systemTime=798n})
